@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import React from 'react';
 import Link from "next/link";
+import {Input} from "@headlessui/react";
+import {UserCircleIcon} from "@heroicons/react/16/solid";
 
 
 const geistSans = Geist({
@@ -16,7 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Next App",
+  title: "E-Shop.IN",
   description: "Sample e-commerce application",
 };
 
@@ -32,14 +34,24 @@ export default function RootLayout({
       >
         <div>
           <div className="navbar p-4 bg-gray-800 text-white">
-            <div className="flex items-center justify-around p-4bg-gray-800 text-white">
-                <h1>SHOP.IN</h1>
+            <div className="flex items-center justify-between p-4bg-gray-800 text-white">
+                <Link href={"/"}>
+                    <p className="text-2xl font-bold">SHOP.IN</p>
+                </Link>
                 <ul className="inline-flex items-center gap-8">
                     <li>
-                        <Link href={"/"} className="text-gray-500 hover:text-gray-300">Home</Link>
+                        <Input placeholder={"Search..."} className="shadow-sm shadow-gray-100 rounded-2xl px-2 py-1"/>
                     </li>
                     <li>
-                        <Link href={"/about"} className="text-gray-500 hover:text-gray-300">About</Link>
+                        <Link href={"/shop"} className="text-gray-300 hover:text-gray-100">Shop</Link>
+                    </li>
+                    <li>
+                        <Link href={"/contact"} className="text-gray-300 hover:text-gray-100">Contact</Link>
+                    </li>
+                    <li>
+                        <Link href={"/"} className="text-gray-300 hover:text-gray-100">
+                            <UserCircleIcon className="w-8"/>
+                        </Link>
                     </li>
                 </ul>
             </div>

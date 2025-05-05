@@ -1,0 +1,9 @@
+.list-view {
+    display: flex;
+    flex-direction: column;
+}
+
+.item {
+    border: 1px solid #ccc;
+    padding: 10px;
+}

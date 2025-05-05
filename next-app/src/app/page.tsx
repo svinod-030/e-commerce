@@ -11,7 +11,7 @@ export default function Page() {
 
     return (
         <CartProvider>
-            <main className="flex flex-col items-center justify-center pt-16 pb-4">
+            <main className="flex flex-col items-center justify-center pt-4 pb-4">
                 <Header />
                 <Products />
                 <Cart />

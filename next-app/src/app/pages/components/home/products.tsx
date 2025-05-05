@@ -1,6 +1,9 @@
 'use client';
 
 import Product from "@/app/pages/components/home/product";
+import {useState} from "react";
+import "./products.css";
+import {ListBulletIcon, RectangleGroupIcon} from "@heroicons/react/16/solid";
 
 const products = [
     {
@@ -42,14 +45,28 @@ const products = [
 ]
 
 export default function Products() {
-    return (
-        <div className="bg-white container">
-            <div className="px-4 py-16">
-                <h2 className="text-2xl font-bold tracking-tight text-gray-900">Products</h2>
+    const [isGridView, setIsGridView] = useState(true);
 
-                <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+    const toggleView = () => {
+        setIsGridView(!isGridView);
+    };
+
+    return (
+        <div className="bg-white container shadow-sm px-5">
+            <div className="py-4">
+                <div className="flex justify-between items-center w-full">
+                    <div>
+                        <h2 className="text-2xl font-bold tracking-tight text-gray-900">Products</h2>
+                    </div>
+                    <div onClick={toggleView} className="flex w-6">
+                        {isGridView ? <ListBulletIcon title={"List"}/> : <RectangleGroupIcon />}
+                    </div>
+                </div>
+                <div className={
+                    isGridView ? 'mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-6 xl:gap-x-9' : 'list-view'}
+                >
                     {products.map((product) => (
-                        <Product product={product} key={product.id}/>
+                        <Product product={product} key={product.id} isGridView={isGridView}/>
                     ))}
                 </div>
             </div>
